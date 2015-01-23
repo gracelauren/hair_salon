@@ -1,4 +1,6 @@
 <h1>Add more clients for <%= @stylist.name() %> </h1>
+<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit or Delete Information for <%= @stylist.name() %></a></p>
+<p><a href="/">Return to Main Page</a></p>
 
 <form action="/clients" method="post">
   <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
@@ -6,7 +8,7 @@
   <label for="name">Name of the client:</label>
   <input id="name" name="name" type="text">
 
-  <button type="submit">Add Client</button>
+  <button class='button' type="submit">Add Client</button>
 </form>
 
 <% if @stylist.clients().any?() %>
@@ -21,6 +23,15 @@
 <% else %>
 <p>This stylist has no clients!</p>
 <% end %>
-
-<p><a href="/stylists/<%= @stylist.id() %>/edit">Edit or Delete Information for <%= @stylist.name() %></a></p>
-<p><a href="/">Return to Main Page</a></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

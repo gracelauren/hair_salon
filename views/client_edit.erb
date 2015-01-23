@@ -6,11 +6,25 @@
   <label for="name">Rename your client:</label>
   <input id="name" name="name" type="text">
 
-  <button type="submit">Update</button>
+  <button class='button btn-danger' type="submit">Update</button>
 </form>
-
+<br>
+<br>
 <form action="/clients/<%= @client.id() %>" method="post">
-  <input name="_method" type="hidden" value="delete">  
-
-  <button type="submit">Delete Client from Database</button>
+  <input name="_method" type="hidden" value="delete">
+  <div class="span7 text-center">
+    <button class= 'button btn-danger' type="submit">Delete <%=@client.name() %> from Database</button>
+  </div>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
