@@ -9,7 +9,7 @@ class Stylist
   end
 
   define_singleton_method(:all) do
-    returned_stylists = DB.exec("SELECT * FROM stylists;")
+    returned_stylists = DB.exec("SELECT * FROM stylists ORDER BY name;")
     stylists = []
     returned_stylists.each() do |stylist|
       name = stylist.fetch('name')

@@ -6,6 +6,14 @@ describe(Stylist) do
     it("starts off with no stylists") do
       expect(Stylist.all()).to(eq([]))
     end
+
+    it("orders stylists alphabetically") do
+      test_stylist = Stylist.new({:name => 'Zakkiyah', :id => nil})
+      test_stylist.save()
+      test_stylist2 = Stylist.new({:name => 'Meena', :id => nil})
+      test_stylist2.save()
+      expect(Stylist.all()).to(eq([test_stylist2, test_stylist]))
+    end
   end
 
   describe('#name') do
@@ -60,7 +68,7 @@ describe(Stylist) do
       expect(test_stylist.clients()).to(eq([client1, client2]))
     end
 
-    it("returns a stylist of clients that belong to that stylist, sorted by due date") do
+    it("returns a stylist of clients that belong to that stylist, sorted alphabetically") do
       test_stylist = Stylist.new({ :name => "Kateri", :id => nil })
       test_stylist.save()
       client1 = Client.new({:name => 'Dakota', :stylist_id => test_stylist.id()})
@@ -69,7 +77,7 @@ describe(Stylist) do
       client1.save()
       client2.save()
       client3.save()
-      expect(test_stylist.clients()).to(eq([client3, client2, client1]))
+      expect(test_stylist.clients()).to(eq([client3, client1, client2]))
     end
 
   end

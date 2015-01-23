@@ -14,6 +14,14 @@ describe(Client) do
     it("starts off with no clients") do
       expect(Client.all()).to(eq([]))
     end
+
+    it("orders clients alphabetically") do
+      test_client = Client.new({:name => 'Fiona', :stylist_id => 1})
+      test_client.save()
+      test_client2 = Client.new({:name => 'Amandine', :stylist_id => 1})
+      test_client2.save()
+      expect(Client.all()).to(eq([test_client2, test_client]))
+    end
   end
 
   describe('#save') do
@@ -47,9 +55,9 @@ describe(Client) do
 
   describe('.remove_empty_name_entry')
   it('deletes from the database instances where the user entered nothing into the name form box and still pressed add client button') do
-    test_client = Client.new({ :name => "Fiona", :id => nil })
+    test_client = Client.new({ :name => "Fiona", :stylist_id => 1})
     test_client.save()
-    test_client2 = Client.new({ :name => '', :id => nil })
+    test_client2 = Client.new({ :name => '', :stylist_id => 1})
     test_client2.save()
     Client.remove_empty_name_entry()
     expect(Client.all()).to(eq([test_client]))

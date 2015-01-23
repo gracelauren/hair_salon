@@ -1,7 +1,7 @@
 require('rspec')
 require('pg')
-require('./stylist/list')
-require('./client/task')
+require('./lib/stylist')
+require('./lib/client')
 
 DB = PG.connect({ :dbname => 'hair_salon_test' })
 
