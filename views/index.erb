@@ -1,0 +1,37 @@
+<h1>Welcome to your Hair Salon Database</h1>
+
+
+<form action="/stylists" method="post">
+  <label for="name">Please a stylist who works at your salon:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Stylist</button>
+</form>
+
+<p> Add a client to a stylist:</p>
+
+<form action="/clients_index" method="post">
+  <label for="stylist_id">Select a Stylist</label>
+  <select id='stylist_id' name='stylist_id' type='text'>
+    <% @stylists.each() do |stylist| %>
+    <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+    <% end %>
+  </select>
+  <label for="name">Name of the client:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add Client</button>
+</form>
+
+
+<% if @stylists.any?() %>
+<p>Click on a stylist to see clientele and/or edit information:</p>
+
+<ul>
+  <% @stylists.each do |stylist| %>
+  <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>Hurry up and hire someone! No one works here!</p>
+<% end %>

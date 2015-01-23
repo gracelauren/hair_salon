@@ -1,16 +1,15 @@
 class Client
-
   attr_reader(:name, :stylist_id, :id)
-
-  define_method(:==) do |another_client|
-    self.name() == another_client.name() && self.stylist_id() == another_client.stylist_id() && self.id() == another_client.id()
-  end
 
   define_method(:initialize) do |attributes|
     name = attributes.fetch(:name)
     @name = name.split.map(&:capitalize).join(' ')
     @stylist_id = attributes.fetch(:stylist_id)
     @id = attributes[:id]
+  end
+
+  define_method(:==) do |another_client|
+    self.name() == another_client.name() && self.stylist_id() == another_client.stylist_id() && self.id() == another_client.id()
   end
 
   define_singleton_method(:all) do
